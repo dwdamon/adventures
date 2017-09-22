@@ -162,7 +162,7 @@ public class Test {
             int priateProbabilityRoll = (int)( Math.random() * 100 );
             //System.out.println(  "Probability roll: " + priateProbabilityRoll  );
             if( currentLocation != this.startingLocation && priateProbabilityRoll < 10 ) {
-              System.out.println( "A pirate jumps out dashes by you and steals the treasure from your hande.  Dang!" );
+              System.out.println( "A pirate jumps out dashes by you and steals the treasure from your hands.  Dang!" );
             
               hasTreasure = false;
               placeTreasure();
