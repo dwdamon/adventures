@@ -68,10 +68,15 @@ public class Test {
                                   , "south:dryTunnel,east:throneRoom,up:non-descriptRoom"
                                   ))
                .addRoom( new Location( "throneRoom"
-                   , "You are room with a throne in the middle of the room."
-                   , "the throne room."
-                   , "west:hallOfBones"
-                   ))               
+                                     , "You are room with a throne in the middle of the room."
+                                     , "the throne room."
+                                     , "east:kingsBoudoir,west:hallOfBones"
+                                     ))               
+               .addRoom( new Location( "kingsBoudoir"
+                                     , "You are room with a large royal bed in the corner.  It's the kings boudior!  Don't sleep here... he may return.  Besides the porrige is way too cold.\nThere is a tiny hole to the south.  You might be able to fit through it."
+                                     , "the kings boudior."
+                                     , "west:throneRoom,south:Entrance"
+                                     ))
                ;
   }
 
@@ -86,7 +91,7 @@ public class Test {
                                       .append( "You have heard rumors of a pirate who lives in a cave near here.\n" )
                                       .append( "The rumors say that he has hidden his treasure in a cave, but, that he guards it jealously!\n" )
                                       .append( "(well.... wouldn't you?)\n" )
-                                      .append(  "You start wondering if this might be his hidden lair.... dare you enter?\n\n"
+                                      .append( "You start wondering if this might be his hidden lair.... dare you enter?\n\n"
                                       );
     
     System.out.println( builder.toString() );
