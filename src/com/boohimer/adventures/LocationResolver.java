@@ -57,7 +57,7 @@ public class LocationResolver implements ILocationResolver {
       System.out.println( "You can't go that way" );
     }
     else {
-      System.out.println( "\n\nYou go " + direction + "\n\n" );
+      System.out.println( "\n\nYou go " + direction + "\n===============================================\n" );
       retval = getLocationByName( currentLocation, nextRoomName );
     }
     

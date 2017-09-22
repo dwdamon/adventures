@@ -65,8 +65,13 @@ public class Test {
                .addRoom( new Location( "hallOfBones"
                                   , "You are room filled with lots and lots of bones.  You hope you don't add yours to the collection."
                                   , "the hall of bones."
-                                  , "south:dryTunnel,up:non-descriptRoom"
-                                  ))  
+                                  , "south:dryTunnel,east:throneRoom,up:non-descriptRoom"
+                                  ))
+               .addRoom( new Location( "throneRoom"
+                   , "You are room with a throne in the middle of the room."
+                   , "the throne room."
+                   , "west:hallOfBones"
+                   ))               
                ;
   }
 
