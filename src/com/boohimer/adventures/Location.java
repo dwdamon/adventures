@@ -14,6 +14,7 @@ public class Location implements ILocation {
   
  
 
+  
   /**
    * @param name
    * @param description
@@ -26,14 +27,14 @@ public class Location implements ILocation {
    * @param down
    */
   public Location( String name
-                     , String description
-                     , String peekDescription
-                     , String north
-                     , String south
-                     , String east
-                     , String west
-                     , String up
-                     , String down ) {
+                 , String description
+                 , String peekDescription
+                 , String north
+                 , String south
+                 , String east
+                 , String west
+                 , String up
+                 , String down ) {
     super();
     this.name            = name;
     this.description     = description;
