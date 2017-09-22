@@ -75,8 +75,23 @@ public class Test {
                .addRoom( new Location( "kingsBoudoir"
                                      , "You are room with a large royal bed in the corner.  It's the kings boudior!  Don't sleep here... he may return.  Besides the porrige is way too cold.\nThere is a tiny hole to the south.  You might be able to fit through it."
                                      , "the kings boudior."
-                                     , "west:throneRoom,south:Entrance"
+                                     , "north:kingsPrivy,south:Entrance,west:throneRoom"
                                      ))
+               .addRoom( new Location( "kingsPrivy"
+                                     , "You are what appears to be the King's privy.  The place the King does his 'buisness' is to the west.  Shower it to the right. (A shower in a cave?  Who would have thought?)"
+                                     , "the kings privy."
+                                     , "north:pennegraphsSojourn,south:kingsBoudiour"
+                                     ))
+               .addRoom( new Location( "pennegraphsSojourn"
+                                     , "You are in small room.  There is not much here.  There is a chisled carving on the wall iwth a burning torch next to it.  It reads \"Pennegraph's soujurn begins\""
+                                     , "Pennegraph's soujourn beginning."
+                                     , "south:kingsPrivy,east:pennegraphsLastStand"
+                                     ))
+               .addRoom( new Location( "pennegraphsLastStand"
+                                     , "You are in large field.  Skeletons are scattered about the ground everywhere.  Amongst the skeletons are rusty, decaying weapons of all types.  There was some mighty battle here a long time past.  There is a cave entrance to the west with a carving in the stone that reads \"I Pennegraph will fight no more.  Forever.\""
+                                     , "Pennegraph's last stand."
+                                     , "west:pennegraphsSojourn"
+                                     ))               
                ;
   }
 
