@@ -50,31 +50,8 @@ public class LocationResolver implements ILocationResolver {
     String    nextRoomName = null;
     ILocation retval       = currentLocation;
     
-    switch( direction.toUpperCase() ) {
-      case "NORTH":
-        nextRoomName = currentLocation.getNorth();
-        break;
-        
-      case "SOUTH":
-        nextRoomName = currentLocation.getSouth();
-        break;
-        
-      case "EAST":
-        nextRoomName = currentLocation.getEast();
-        break;
-        
-      case "WEST":
-        nextRoomName = currentLocation.getWest();
-        break;
-        
-      case "UP":
-        nextRoomName = currentLocation.getUp();
-        break;
-        
-      case "DOWN":
-        nextRoomName = currentLocation.getDown();
-        break;
-    }
+    nextRoomName = currentLocation.getRoomNameByDirection( direction.toLowerCase() );
+    
     
     if( nextRoomName == null ) {
       System.out.println( "You can't go that way" );

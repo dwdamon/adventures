@@ -1,18 +1,21 @@
 package com.boohimer.adventures;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Location implements ILocation {
   // Define all the attributes of a location
   private String           name;
   private String           description;
   private String           peekDescription;
-  private String           north;
-  private String           south;
-  private String           east;
-  private String           west;
-  private String           up;
-  private String           down;
+  //private String           north;
+  //private String           south;
+  //private String           east;
+  //private String           west;
+  //private String           up;
+  //private String           down;
   
- 
+  private Map<String,String> movements = new HashMap<String,String>();
 
   
   /**
@@ -26,6 +29,7 @@ public class Location implements ILocation {
    * @param up
    * @param down
    */
+  /*
   public Location( String name
                  , String description
                  , String peekDescription
@@ -45,6 +49,28 @@ public class Location implements ILocation {
     this.west            = west;
     this.up              = up;
     this.down            = down;
+  }
+  */
+  
+  public Location( String name
+                 , String description
+                 , String peekDescription
+                 , String movementString
+                 ) {
+    super();
+    this.name            = name;
+    this.description     = description;
+    this.peekDescription = peekDescription;
+    
+    String[] movementMapping = movementString.split( "," );
+    
+    for( String item : movementMapping ) {
+      String[] oneMovementMap = item.split( ":" );
+      
+      if( oneMovementMap.length > 1 ) {
+        movements.put( oneMovementMap[ 0 ].toLowerCase(), oneMovementMap[ 1 ] );
+      }
+    }
   }
   
  
@@ -72,53 +98,20 @@ public class Location implements ILocation {
     return peekDescription;
   }
 
-  /* (non-Javadoc)
-   * @see com.boohimer.adventures.Location1#getNorth()
-   */
   @Override
-  public String getNorth() {
-    return north;
+  public String getRoomNameByDirection( String direction ) {
+    String retval = null;
+    
+    String lowercaseDirection = direction.toLowerCase();
+    
+    if( movements.containsKey( lowercaseDirection )) {
+      retval = movements.get( lowercaseDirection );
+    }
+    
+    return retval;
   }
 
-  /* (non-Javadoc)
-   * @see com.boohimer.adventures.Location1#getSouth()
-   */
-  @Override
-  public String getSouth() {
-    return south;
-  }
-
-  /* (non-Javadoc)
-   * @see com.boohimer.adventures.Location1#getEast()
-   */
-  @Override
-  public String getEast() {
-    return east;
-  }
-
-  /* (non-Javadoc)
-   * @see com.boohimer.adventures.Location1#getWest()
-   */
-  @Override
-  public String getWest() {
-    return west;
-  }
-
-  /* (non-Javadoc)
-   * @see com.boohimer.adventures.Location1#getUp()
-   */
-  @Override
-  public String getUp() {
-    return up;
-  }
-
-  /* (non-Javadoc)
-   * @see com.boohimer.adventures.Location1#getDown()
-   */
-  @Override
-  public String getDown() {
-    return down;
-  }
+ 
   
   private void appendPeekDescription( StringBuilder builder, String direction, ILocation location ) {
     if( location != null ) {
@@ -131,20 +124,22 @@ public class Location implements ILocation {
     builder.append( getDescription() )
            .append( "\n\nDirections you can go:" );
     
-    ILocation northLocation = resolver.getLocationByName( north );
-    ILocation southLocation = resolver.getLocationByName( south );
-    ILocation eastLocation  = resolver.getLocationByName( east );
-    ILocation westLocation  = resolver.getLocationByName( west );
-    ILocation upLocation    = resolver.getLocationByName( up );
-    ILocation downLocation  = resolver.getLocationByName( down );
-    
-    appendPeekDescription( builder, "north", northLocation );
-    appendPeekDescription( builder, "south", southLocation );
-    appendPeekDescription( builder, "east",  eastLocation );
-    appendPeekDescription( builder, "west",  westLocation );
-    appendPeekDescription( builder, "up",    upLocation );
-    appendPeekDescription( builder, "down",  downLocation );
+    for( String key : movements.keySet() ) {
+      appendPeekDescription( builder
+                           , key.toLowerCase()
+                           , resolver.getLocationByName( movements.get( key ))
+                           );
+    }
     
     return builder.toString();
+  }
+
+  public static void main( String[] args ) {
+    Location l = new Location( "test"
+                             , "description"
+                             , "peekDescription"
+                             , "north:mainCavern,south:Entrance"
+                             );
+   
   }
 }
