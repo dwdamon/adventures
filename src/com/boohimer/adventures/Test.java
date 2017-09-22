@@ -80,10 +80,10 @@ public class Test {
                .addRoom( new Location( "kingsPrivy"
                                      , "You are what appears to be the King's privy.  The place the King does his 'buisness' is to the west.  Shower it to the right. (A shower in a cave?  Who would have thought?)"
                                      , "the kings privy."
-                                     , "north:pennegraphsSojourn,south:kingsBoudiour"
+                                     , "north:pennegraphsSojourn,south:kingsBoudoir"
                                      ))
                .addRoom( new Location( "pennegraphsSojourn"
-                                     , "You are in small room.  There is not much here.  There is a chisled carving on the wall iwth a burning torch next to it.  It reads \"Pennegraph's soujurn begins\""
+                                     , "You are in small room.  There is not much here.  There is a chisled carving on the wall with a burning torch next to it.  It reads \"Pennegraph's soujurn begins\""
                                      , "Pennegraph's soujourn beginning."
                                      , "south:kingsPrivy,east:pennegraphsLastStand"
                                      ))
