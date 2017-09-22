@@ -133,13 +133,4 @@ public class Location implements ILocation {
     
     return builder.toString();
   }
-
-  public static void main( String[] args ) {
-    Location l = new Location( "test"
-                             , "description"
-                             , "peekDescription"
-                             , "north:mainCavern,south:Entrance"
-                             );
-   
-  }
 }
