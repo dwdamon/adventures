@@ -148,13 +148,14 @@ public class Test implements ITickHandler {
   }
   
   private void runMaze( IPlayer player ) {
-    ILocation currentLocation  = resolver.getLocationByName( player.getCurrentLocation() );
-    ILocation startingLocation = resolver.getLocationByName( player.getStartingLocation() );
-    ILocation lastLocation     = null;
+    ILocation   currentLocation  = resolver.getLocationByName( player.getCurrentLocation() );
+    ILocation   startingLocation = resolver.getLocationByName( player.getStartingLocation() );
+    ILocation   lastLocation     = null;
+    TickService service          = new TickService( this, resolver  );
     
     placeTreasure();
     
-    Thread thread = new Thread( new TickService( this, resolver  ));
+    Thread thread = new Thread( service );
     thread.start();
     
     preamble();
@@ -199,6 +200,8 @@ public class Test implements ITickHandler {
     }
     finally {
       scanner.close();
+      service.halt();
+      thread.interrupt();
     }
   }
   
