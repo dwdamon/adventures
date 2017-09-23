@@ -2,55 +2,17 @@ package com.boohimer.adventures;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 public class Location implements ILocation {
   // Define all the attributes of a location
   private String           name;
   private String           description;
   private String           peekDescription;
-  //private String           north;
-  //private String           south;
-  //private String           east;
-  //private String           west;
-  //private String           up;
-  //private String           down;
   
-  private Map<String,String> movements = new HashMap<String,String>();
-
   
-  /**
-   * @param name
-   * @param description
-   * @param peekDescription
-   * @param north
-   * @param south
-   * @param east
-   * @param west
-   * @param up
-   * @param down
-   */
-  /*
-  public Location( String name
-                 , String description
-                 , String peekDescription
-                 , String north
-                 , String south
-                 , String east
-                 , String west
-                 , String up
-                 , String down ) {
-    super();
-    this.name            = name;
-    this.description     = description;
-    this.peekDescription = peekDescription;
-    this.north           = north;
-    this.south           = south;
-    this.east            = east;
-    this.west            = west;
-    this.up              = up;
-    this.down            = down;
-  }
-  */
+  private Vector<NonPlayerCharacterBase> nonPlayerCharacters = new Vector<NonPlayerCharacterBase>();
+  private Map<String,String>             movements           = new HashMap<String,String>();
   
   public Location( String name
                  , String description
@@ -74,6 +36,14 @@ public class Location implements ILocation {
   }
   
  
+  public void addNonPlayerCharacter( NonPlayerCharacterBase npc ) {
+    this.nonPlayerCharacters.add( npc );
+  }
+  
+  public void removeNonPlayerCharacter( NonPlayerCharacterBase npc ) {
+    this.nonPlayerCharacters.remove( npc );
+  }
+  
   /* (non-Javadoc)
    * @see com.boohimer.adventures.Location1#getName()
    */
@@ -121,8 +91,17 @@ public class Location implements ILocation {
   
   public String describe( ILocationResolver resolver ) {
     StringBuilder builder = new StringBuilder(  "You look around:\n    " );
-    builder.append( getDescription() )
-           .append( "\n\nDirections you can go:" );
+    builder.append( getDescription() );
+    
+    if( !nonPlayerCharacters.isEmpty() ) {
+      builder.append( "\n    ------------------\n    Also in this room:\n" );
+      for( Object npc : nonPlayerCharacters.toArray() ) {
+        builder.append( "    " ).append(((NonPlayerCharacterBase) npc ).getName() ).append( "\n" );
+      }
+      builder.append( "    ------------------\n" );
+    }
+    
+    builder.append( "\n\nDirections you can go:" );
     
     for( String key : movements.keySet() ) {
       appendPeekDescription( builder

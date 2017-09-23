@@ -23,4 +23,8 @@ public interface ILocation {
 
   
   public String describe( ILocationResolver resolver );
+  
+  public void addNonPlayerCharacter( NonPlayerCharacterBase npc );
+  
+  public void removeNonPlayerCharacter( NonPlayerCharacterBase npc );
 }
