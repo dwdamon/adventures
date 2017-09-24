@@ -1,5 +1,7 @@
 package com.boohimer.adventures;
 
+import java.util.Map;
+
 public interface ILocation {
   /**
    * @return the name
@@ -21,6 +23,7 @@ public interface ILocation {
    */
   String getRoomNameByDirection( String direction );
 
+  public Map<String, String> getMovements();
   
   public String describe( ILocationResolver resolver );
   

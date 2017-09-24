@@ -111,9 +111,30 @@ public class Test implements ITickHandler {
                                   , "west:pennegraphsSojourn"
                                   ))               
             ;
+  }
+  
+  private void addNonPlayers() {
+    this.nonPlayerCharacters.add( new CyclingNonPlayerCharacter( "dead bob"
+                                                               ,  new String[] { "mossRoom"
+                                                                               , "spiderRoom"
+                                                                               , "non-descriptRoom"
+                                                                               , "spiderRoom" 
+                                                                               }
+                                                               ));
     
-    this.nonPlayerCharacters.add( new CyclingNonPlayerCharacter( "dead bob",  new String[] { "mossRoom", "spiderRoom", "non-descriptRoom", "spiderRoom" } ));
-    this.nonPlayerCharacters.add( new CyclingNonPlayerCharacter( "king Gerb", new String[] { "hallOfBones", "throneRoom", "kingsBoudoir", "kingsPrivy", "kingsBoudoir", "throneRoom" } ));
+    this.nonPlayerCharacters.add( new CyclingNonPlayerCharacter( "King Louey"
+                                                               , new String[] { "hallOfBones"
+                                                                              , "throneRoom"
+                                                                              , "kingsBoudoir"
+                                                                              , "kingsPrivy"
+                                                                              , "kingsBoudoir"
+                                                                              , "throneRoom"
+                                                                              }
+                                                               ));
+    
+    this.nonPlayerCharacters.add( new RandomizingNonPlayerCharacter( "Jason",          "hallOfBones" ));
+    this.nonPlayerCharacters.add( new RandomizingNonPlayerCharacter( "Frakenstein",    "mainCavern" ));
+    this.nonPlayerCharacters.add( new RandomizingNonPlayerCharacter( "Freddy Krueger", "kingsBoudoir" ));
   }
 
   private String getDirection( String input ) {
@@ -154,6 +175,7 @@ public class Test implements ITickHandler {
     TickService service          = new TickService( this, resolver  );
     
     placeTreasure();
+    addNonPlayers();
     
     Thread thread = new Thread( service );
     thread.start();

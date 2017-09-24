@@ -15,7 +15,8 @@ public class CyclingNonPlayerCharacter extends NonPlayerCharacterBase {
     if( rooms != null && rooms.length > 0 ) {
       if( this.getCurrentLocation() == null ) {
         setCurrentLocation( rooms[ index ]);
-        //currentLocation = resolver.getLocationByName( rooms[ index ]);
+        ILocation currentLocation = resolver.getLocationByName( rooms[ index ]);
+        currentLocation.addNonPlayerCharacter( this );
       }
       else {
         ILocation workingLocation = resolver.getLocationByName( rooms[ index ]);

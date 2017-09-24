@@ -10,7 +10,6 @@ public class Location implements ILocation {
   private String           description;
   private String           peekDescription;
   
-  
   private Vector<NonPlayerCharacterBase> nonPlayerCharacters = new Vector<NonPlayerCharacterBase>();
   private Map<String,String>             movements           = new HashMap<String,String>();
   
@@ -83,6 +82,11 @@ public class Location implements ILocation {
 
  
   
+  public Map<String, String> getMovements() {
+    return new HashMap<String,String>( movements );
+  }
+
+
   private void appendPeekDescription( StringBuilder builder, String direction, ILocation location ) {
     if( location != null ) {
       builder.append( "\n    Looking " ).append( direction ).append( " you see: " ).append(  location.getPeekDescription() );
@@ -94,7 +98,7 @@ public class Location implements ILocation {
     builder.append( getDescription() );
     
     if( !nonPlayerCharacters.isEmpty() ) {
-      builder.append( "\n    ------------------\n    Also in this room:\n" );
+      builder.append( "\n    ------------------\n    Also here:\n" );
       for( Object npc : nonPlayerCharacters.toArray() ) {
         builder.append( "    " ).append(((NonPlayerCharacterBase) npc ).getName() ).append( "\n" );
       }
