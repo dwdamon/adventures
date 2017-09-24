@@ -89,12 +89,12 @@ public class Location implements ILocation {
 
   private void appendPeekDescription( StringBuilder builder, String direction, ILocation location ) {
     if( location != null ) {
-      builder.append( "\n    Looking " ).append( direction ).append( " you see: " ).append(  location.getPeekDescription() );
+      builder.append( "\n  " ).append( direction ).append( " you see " ).append(  location.getPeekDescription() );
     }
   }
   
   public String describe( ILocationResolver resolver ) {
-    StringBuilder builder = new StringBuilder(  "You look around:\n    " );
+    StringBuilder builder = new StringBuilder();
     builder.append( getDescription() );
     
     if( !nonPlayerCharacters.isEmpty() ) {
