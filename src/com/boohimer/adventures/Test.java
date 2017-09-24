@@ -17,7 +17,7 @@ public class Test implements ITickHandler {
                                                   , "hallOfBones"
                                                   , "ThroneRoom"
                                                   , "kingsPrivy"
-                                                  , "pennegrapsSojourn"
+                                                  , "pennegraphsSojourn"
                                                   };
   
   private Vector<NonPlayerCharacterBase> nonPlayerCharacters = new Vector<NonPlayerCharacterBase>();
@@ -108,8 +108,13 @@ public class Test implements ITickHandler {
             .addRoom( new Location( "pennegraphsLastStand"
                                   , "You are in large field.  Skeletons are scattered about the ground everywhere.  Amongst the skeletons are rusty, decaying weapons of all types.  There was some mighty battle here a long time past.  There is a cave entrance to the west with a carving in the stone that reads \"I Pennegraph will fight no more.  Forever.\""
                                   , "Pennegraph's last stand."
-                                  , "west:pennegraphsSojourn"
-                                  ))               
+                                  , "east:maurdersTrail"
+                                  ))
+            .addRoom( new Location( "maurdersTrail"
+                                  , "You are on a narrow trail through the woods.  You can tell that at one time thi was a wider trail.  Perhaps a road.  This is probably the path the marauders ran down Pennegraph and his 'horde of heros'. That battle didn't go too well for the marauders.  But it didnt' go so well for Pennegraph.  Legneds say that only Pennegraph survived that encounter."
+                                  , "The marauders trail."
+                                  , "west:pennegraphsLastStand"
+                                  ))                          
             ;
   }
   
@@ -135,6 +140,8 @@ public class Test implements ITickHandler {
     this.nonPlayerCharacters.add( new RandomizingNonPlayerCharacter( "Jason",          "hallOfBones" ));
     this.nonPlayerCharacters.add( new RandomizingNonPlayerCharacter( "Frakenstein",    "mainCavern" ));
     this.nonPlayerCharacters.add( new RandomizingNonPlayerCharacter( "Freddy Krueger", "kingsBoudoir" ));
+    this.nonPlayerCharacters.add( new RandomizingNonPlayerCharacter( "Pennegraph",     "pennegraphsSojourn" ));
+    
   }
 
   private String getDirection( String input ) {
