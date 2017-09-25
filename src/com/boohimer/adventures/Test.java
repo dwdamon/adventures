@@ -108,10 +108,10 @@ public class Test implements ITickHandler {
             .addRoom( new Location( "pennegraphsLastStand"
                                   , "You are in large field.\nSkeletons are scattered about the ground everywhere.  Amongst the skeletons are rusty, decaying weapons of all types.\nThere was some mighty battle here a long time past.  There is a cave entrance to the west with a carving in the stone that reads \"I Pennegraph will fight no more.  Forever.\""
                                   , "Pennegraph's last stand."
-                                  , "east:maurdersTrail"
+                                  , "east:maurdersTrail,west:pennegraphsSojourn"
                                   ))
             .addRoom( new Location( "maurdersTrail"
-                                  , "You are on a narrow trail through the woods.\nYou can tell that at one time thi was a wider trail.  Perhaps a road.\nThis is probably the path the marauders ran down Pennegraph and his 'horde of heros'. That battle didn't go too well for the marauders.  But it didnt' go so well for Pennegraph.  Legneds say that only Pennegraph survived that encounter."
+                                  , "You are on a narrow trail through the woods.\nYou can tell that at one time thi was a wider trail.  Perhaps a road.\nThis is probably the path the marauders ran down Pennegraph and his 'horde of heros'. That battle didn't go too well for the marauders, but, it didnt' go so well for Pennegraph either.  Legends say that only Pennegraph survived that encounter."
                                   , "The marauders trail."
                                   , "west:pennegraphsLastStand"
                                   ))                          

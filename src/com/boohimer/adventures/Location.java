@@ -98,11 +98,11 @@ public class Location implements ILocation {
     builder.append( getDescription() );
     
     if( !nonPlayerCharacters.isEmpty() ) {
-      builder.append( "\n    ------------------\n    Also here:\n" );
+      builder.append( "\n\n------------------\nAlso here:\n" );
       for( Object npc : nonPlayerCharacters.toArray() ) {
         builder.append( "    " ).append(((NonPlayerCharacterBase) npc ).getName() ).append( "\n" );
       }
-      builder.append( "    ------------------\n" );
+      builder.append( "------------------\n" );
     }
     
     builder.append( "\n\nDirections you can go:" );
